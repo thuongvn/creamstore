@@ -1,0 +1,99 @@
+//// -- LEVEL 1
+//// -- Tables and References
+
+// Creating tables
+Table users as u {
+  id int [pk, increment] // auto-increment
+  email varchar
+  user_name varchar
+  password varchar
+  role int
+}
+
+Table profile{
+  id int [pk,increment]
+  user_id int [ref:> u.id]
+  user_name nvarchar
+  address nvarchar
+  numberphone varchar
+  cash_balance decimal
+}
+
+Table news{
+  id int [pk, increment]
+  title varchar
+  content nvarchar
+  img varchar
+  date_create_at timestamp
+  user_id int [ref:> u.id]
+}
+
+Table products as p{
+  id int[pk, increment]
+  name nvarchar
+  description nvarchar
+  images varchar
+  create_at timestamp
+  update_at timestamp
+  category_id int [ref:> category.id]
+  price decimal
+}
+
+Table category{
+  id int [pk,increment]
+  name nvarchar
+  description nvarchar
+  create_at timestamp
+  update_at timestamp
+}
+
+Table cart_item{
+  id int [pk, increment]
+  user_id int [ref:> u.id]
+  product_id int[ref:> p.id]
+  status int
+  quantity int
+}
+
+Table transaction{
+  id bigint [pk,increment]
+  user_id int [ref:> u.id]
+  create_at timestamp
+  update_at timestamp
+  total_price decimal
+  address varchar
+}
+
+Table transaction_detail{
+  id bigint [pk, increment]
+  transaction_id int [ref:> transaction.id]
+  product_id int [ref:> p.id]
+  quantity int
+  created_at timestamp
+  update_at timestamp
+}
+
+Table voucher{
+  id int[pk,increment]
+  discount float
+  created_at timestamp
+  end_at timestamp
+}
+
+Table voucher_user{
+  voucher_id int [pk, ref:> voucher.id]
+  user_id int [pk, ref:> u.id]
+  quantity int
+}
+
+Table store{
+  id int [pk, increment]
+  name nvarchar
+  address varchar
+}
+
+Table store_have_product{
+  store_id int [pk, ref:> store.id]
+  product_id int [pk, ref:> p.id]
+  quantity int
+}
