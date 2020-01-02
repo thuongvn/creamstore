@@ -43,7 +43,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<CartItem> cartItems;
-//
+
 //    @OneToMany(mappedBy = "user")
 //    private List<Transaction> transactions;
 }
