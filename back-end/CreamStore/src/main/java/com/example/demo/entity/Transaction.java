@@ -12,9 +12,9 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @ManyToOne
-    @JoinColumn(name = "user")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user")
+//    private User user;
 
     @Column(name="create_at")
     private Date create_at;
