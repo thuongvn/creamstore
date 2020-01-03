@@ -7,9 +7,10 @@ import java.util.List;
 
 @Service
 public interface ProductService {
-    public boolean createProduct(Product product);
-    public Product updateProduct(Product product);
-    public Product deleteProduct(int id);
+    public Product createProduct(Product product);
+    public Product updateProduct(Product product, int id);
+    public boolean deleteProduct(int id);
     public List<Product> getAllProduct();
-    public Product getProductById();
+    public Product getProductById(int id);
+    public List<Product> getProducstByFreeText(String keyword);
 }

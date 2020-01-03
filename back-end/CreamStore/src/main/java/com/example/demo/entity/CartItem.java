@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="product")
+@Table(name="cart_item")
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

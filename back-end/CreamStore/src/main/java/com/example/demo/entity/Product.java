@@ -1,6 +1,11 @@
 package com.example.demo.entity;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Store;
+import org.hibernate.search.annotations.TermVector;
+import org.springframework.stereotype.Indexed;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Indexed
 @Table(name="product")
 public class Product {
     @Id
@@ -18,6 +24,7 @@ public class Product {
     private int id;
 
     @NotNull
+    @Field(termVector = TermVector.YES, analyze= Analyze.YES, store= Store.NO)
     @Column(name="product_name")
     private String product_name;
 
