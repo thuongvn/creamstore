@@ -16,8 +16,8 @@ import java.util.List;
 public class ProductImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private EntityManager entityManager;
+//    @Autowired
+//    private EntityManager entityManager;
 
     @Override
     public Product createProduct(Product product) {
@@ -71,21 +71,21 @@ public class ProductImpl implements ProductService {
 
     @Override
     public List<Product> getProducstByFreeText(String keyword) {
-        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
-
-        QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory()
-                .buildQueryBuilder()
-                .forEntity(Product.class)
-                .get();
-
-        Query query = queryBuilder
-                .keyword()
-                .onField("product_name")
-                .matching(keyword)
-                .createQuery();
-        FullTextQuery jpaQuery = fullTextEntityManager.createFullTextQuery(query, Product.class);
-        List<Product> results = jpaQuery.getResultList();
-        return results;
+//        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+//
+//        QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory()
+//                .buildQueryBuilder()
+//                .forEntity(Product.class)
+//                .get();
+//
+//        Query query = queryBuilder
+//                .keyword()
+//                .onField("product_name")
+//                .matching(keyword)
+//                .createQuery();
+//        FullTextQuery jpaQuery = fullTextEntityManager.createFullTextQuery(query, Product.class);
+//        List<Product> results = jpaQuery.getResultList();
+        return null;
     }
 
 }

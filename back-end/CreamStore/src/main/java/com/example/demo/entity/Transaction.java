@@ -27,6 +27,8 @@ public class Transaction {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "location")
+    private String location;
 
 
 }

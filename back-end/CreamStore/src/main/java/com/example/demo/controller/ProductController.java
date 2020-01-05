@@ -68,7 +68,7 @@ public class ProductController {
             @ApiResponse(code = 500, message = "Internal Server Error"),
     })
     @GetMapping("")
-    public ResponseEntity<?> getProductById(){
+    public ResponseEntity<?> getAllProduct(){
         return ResponseEntity.ok(productService.getAllProduct());
     }
 

@@ -44,6 +44,13 @@ public class Product {
     @Column(name="price")
     private float price;
 
+
     @OneToMany(mappedBy = "product")
     private List<CartItem> cartItems;
+
+    @OneToMany(mappedBy = "product")
+    private List<TransactionDetail> transactionDetails;
+
+    @OneToMany(mappedBy = "product")
+    private List<StoreHaveProduct> storeHaveProducts;
 }
