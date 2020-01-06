@@ -52,7 +52,7 @@ public class ProductController {
         return (ResponseEntity) ResponseEntity.ok(result == true ? "success" : "unsuccess");
     }
 
-    @ApiOperation(value = "Delete a product by id", response = Product.class)
+    @ApiOperation(value = "Get a product by id", response = Product.class)
     @ApiResponses({
             @ApiResponse(code = 400, message = "Bad request"),
             @ApiResponse(code = 500, message = "Internal Server Error"),

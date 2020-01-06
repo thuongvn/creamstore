@@ -72,4 +72,5 @@ public class CreateUserRequest {
     private Date birthday;
 
     private float total_cash;
+
 }

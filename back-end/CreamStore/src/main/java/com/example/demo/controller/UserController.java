@@ -23,8 +23,6 @@ public class UserController {
     @Autowired(required = false)
     private UserService userService;
 
-    @Autowired
-    private ProductService productService;
 
     @ApiOperation(value = "create a User", response = UserDto.class)
     @ApiResponses({
