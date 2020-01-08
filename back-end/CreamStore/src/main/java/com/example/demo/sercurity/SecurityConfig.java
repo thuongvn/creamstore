@@ -37,9 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors() // Lọc CORS -> corsFilter()
+                .cors()
                 .and()
-                .csrf() // Trong Spring , chế độ bảo vệ khỏi CSRF mặc định được bật -> không cần thì disable đi
+                .csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/user/login").permitAll()
