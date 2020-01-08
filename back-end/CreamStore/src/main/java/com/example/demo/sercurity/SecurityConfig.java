@@ -61,8 +61,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Vô hiệu hóa toàn bộ bảo mật đối với các request vào các đường dẫn sau
         // Không phải trải qua filter
         web.ignoring().antMatchers(
+                "/v2/api-docs",
+                "/configuration/ui",
                 "/swagger-resources/**",
-                "/swagger-ui.html"
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**"
         );
     }
 }
