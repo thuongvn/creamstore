@@ -1,9 +1,17 @@
 package com.example.demo.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "role")
 public class Role implements Serializable {
@@ -15,7 +23,7 @@ public class Role implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+//    @ManyToMany(mappedBy = "roles")
+//    private Set<User> users;
 
 }

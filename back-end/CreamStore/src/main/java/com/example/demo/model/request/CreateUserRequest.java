@@ -73,4 +73,5 @@ public class CreateUserRequest {
 
     private float total_cash;
 
+    private String role;
 }

@@ -23,7 +23,7 @@ public class StoreHaveProduct {
 
     //trang thai cua hang hoa. vd: "true ": "san pham dang ban" ,  "false" : "san pham chua ban"
     @Column(name="status")
-    private boolean status;
+    private int status;
 
     @ManyToOne
     @JoinColumn(name = "store_id")
@@ -32,5 +32,6 @@ public class StoreHaveProduct {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
 
 }

@@ -4,6 +4,7 @@ import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
 import com.example.demo.model.detail.UserDto;
 import com.example.demo.model.request.CreateUserRequest;
+import com.example.demo.model.request.Login;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.UserService;
 import io.swagger.annotations.Api;
@@ -22,6 +23,19 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired(required = false)
     private UserService userService;
+
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody @Valid Login createUserRequest) {
+        // Gọi đến method trong service xử lý đăng nhập
+        // Gen token trả về client bằng cách gọi hàm, truyền entity User vào
+        // JwtUltis.generateToken(user);
+        String resultJWT = userService.login(createUserRequest.getEmail(), createUserRequest.getPassword());
+        if(resultJWT == null){
+            resultJWT = "Login faill";
+        }
+        return ResponseEntity.ok(resultJWT);
+    }
 
 
     @ApiOperation(value = "create a User", response = UserDto.class)

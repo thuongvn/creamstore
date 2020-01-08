@@ -5,6 +5,7 @@ import com.example.demo.model.detail.UserDto;
 import com.example.demo.model.mapper.UserMapper;
 import com.example.demo.model.request.CreateUserRequest;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.ultil.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,7 @@ public class UserServiceImpl implements UserService{
         user.setAvatar(createUserRequest.getAvatar());
         user.setBirthday(createUserRequest.getBirthday());
 //        user.setTotal_cash(createUserRequest.getTotal_cash());
+        user.setRoles(createUserRequest.getRole());
         userRepository.save(user);
         return UserMapper.toUserDto(user);
     }
@@ -40,6 +42,7 @@ public class UserServiceImpl implements UserService{
         user.setAvatar(createUserRequest.getAvatar());
         user.setBirthday(createUserRequest.getBirthday());
 //        user.setTotal_cash(createUserRequest.getTotal_cash());
+        user.setRoles(createUserRequest.getRole());
         userRepository.save(user);
         return UserMapper.toUserDto(user);
     }
@@ -85,5 +88,21 @@ public class UserServiceImpl implements UserService{
 
 //        return userDtos;
         return userRepository.findAll();
+    }
+    public String login(String email, String password){
+        try{
+            User user = userRepository.findByEmail(email);
+            if(user!=null){
+                if(password.equalsIgnoreCase(user.getPassword())){
+                    UserDto userDto = UserMapper.toUserDto(user);
+                    return JwtUtils.generateToken(user);
+                }
+                return null;
+            }else{
+                return null;
+            }
+        }catch (Exception e){
+            return null;
+        }
     }
 }
