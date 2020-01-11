@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -45,6 +46,9 @@ public class User implements Serializable {
 
     @Column(name="role")
     private String roles;
+
+    @Column(name="status")
+    private Boolean status;
 
     @OneToMany(mappedBy = "user")
     private List<CartItem> cartItems;

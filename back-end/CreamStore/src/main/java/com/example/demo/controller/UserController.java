@@ -23,8 +23,15 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired(required = false)
     private UserService userService;
-
-
+    @ApiOperation(value = "get user want to become store", response = UserDto.class)
+    @ApiResponses({
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 500, message = "Internal Server Error"),
+    })
+    @GetMapping("get-user-register")
+    public ResponseEntity<?> getUserRegister(@RequestBody @Valid Login createUserRequest) {
+        return ResponseEntity.ok(userService.getCustomerWantToStore());
+    }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid Login createUserRequest) {
         // Gọi đến method trong service xử lý đăng nhập

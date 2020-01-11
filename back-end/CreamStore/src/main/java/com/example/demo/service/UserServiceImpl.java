@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class UserServiceImpl implements UserService{
@@ -28,6 +28,13 @@ public class UserServiceImpl implements UserService{
         user.setBirthday(createUserRequest.getBirthday());
 //        user.setTotal_cash(createUserRequest.getTotal_cash());
         user.setRoles(createUserRequest.getRole());
+        //neu khi tao, nguoi dung k yeu cau gi, thi yeu cau thanh store se coi nhu k co
+        if(createUserRequest.getStatus()==null){
+            user.setStatus(false);
+        }else {
+            user.setStatus(createUserRequest.getStatus());
+        }
+
         userRepository.save(user);
         return UserMapper.toUserDto(user);
     }
@@ -103,6 +110,22 @@ public class UserServiceImpl implements UserService{
             }else{
                 return null;
             }
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public List<UserDto> getCustomerWantToStore(){
+
+        try {
+            List<User> listUser = userRepository.findAllByStatus(true);
+            List<UserDto> listUserDto = new ArrayList<>();
+
+            for(User u : listUser){
+                listUserDto.add(UserMapper.toUserDto(u));
+            }
+            return listUserDto;
         }catch (Exception e){
             return null;
         }

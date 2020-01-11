@@ -15,6 +15,7 @@ public interface UserService {
     public UserDto deleteUser(int id);
     public UserDto getUserById(int id);
     public List<User> getAllUser();
+    public List<UserDto> getCustomerWantToStore();
 
 //    public User createUser(User createUserRequest);
 //    public User updateUser(CreateUserRequest createUserRequest);
