@@ -21,16 +21,20 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @NotNull
     @Column(name="email", unique = true)
     private String email;
 
+    @NotNull
     @Column(name="password")
     private String password;
 
+    @NotNull
     @Column(name="full_name")
     private String full_name;
 
+    @NotNull
     @Column(name="numberphone")
     private String numberphone;
 
