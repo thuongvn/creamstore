@@ -65,4 +65,7 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private List<VoucherOfUser> voucherOfUsers;
+
+    @OneToMany(mappedBy = "user")
+    private List<Store> stores;
 }
