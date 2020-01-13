@@ -38,12 +38,14 @@ public class User implements Serializable {
     @Column(name="numberphone")
     private String numberphone;
 
-//    @Column(name="total_cash")
-//    private float total_cash;
+    @Column(name="address")
+    private String address;
 
     @Column(name="avatar")
     private String avatar;
 
+    @Column(name="gender")
+    private Boolean gender;
 
     @Column(name="birthday")
     private Date birthday;

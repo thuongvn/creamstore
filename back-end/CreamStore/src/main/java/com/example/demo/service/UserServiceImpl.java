@@ -42,6 +42,9 @@ public class UserServiceImpl implements UserService {
             user.setStatus(createUserRequest.getStatus());
         }
 
+        user.setGender(createUserRequest.getGender());
+        user.setAddress(createUserRequest.getAddress());
+
         userRepository.save(user);
         return UserMapper.toUserDto(user);
     }
