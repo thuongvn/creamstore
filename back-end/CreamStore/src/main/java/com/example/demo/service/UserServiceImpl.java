@@ -141,7 +141,10 @@ public class UserServiceImpl implements UserService {
 
         List<UserDto> listUserDto = new ArrayList<>();
         for (User u : listUser) {
-            listUserDto.add(UserMapper.toUserDto(u));
+            if(!u.getRoles().equals("ADMIN")){
+                listUserDto.add(UserMapper.toUserDto(u));
+            }
+
         }
 
         ListUserDto list = new ListUserDto();
