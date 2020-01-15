@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -107,7 +108,7 @@ public class UserController {
             @ApiResponse(code = 500, message = "Internal Server Error"),
     })
     @PutMapping("")
-    public ResponseEntity<?> updatetUserById(@RequestBody CreateUserRequest createUserRequest){
+    public ResponseEntity<?> updatetUserById(@RequestBody CreateUserRequest createUserRequest, @RequestParam("imageFile") MultipartFile imageFile){
 
         UserDto user = userService.updateUser(createUserRequest);
         if(user !=null){
